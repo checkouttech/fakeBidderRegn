@@ -1,0 +1,13 @@
+*** Settings ***
+Library         foo_module.py
+
+*** Test Cases ***
+1) Test 1
+   ${r} =  foo_module.hello_world    # call Lib.func
+   Should Contain  ${r}  HELLO
+
+2) Test 1
+   ${r} =  foo_module.hello_world    # call Lib.func
+   Should Contain  ${r}  Hi
+
+

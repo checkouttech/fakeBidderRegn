@@ -6,18 +6,28 @@ default_template:
 
 tests:
     test1:
-        data: {"publisher_id":11112,"site_id":66,"pmp":{"deals":[{"id":"TA-99999-r1","floor":0.20000000298023224,"seats":["r1"],"type":2}]},"device":{"os":"26000"},"ad_size_id":2,"instl":1}
+        data: {"publisher_id":11111,"site_id":161,"pmp":{"deals":[{"id":"TA-99999-r1","floor":0.20000000298023224,"seats":["r1"],"type":2}]},"device":{"os":"26000"},"ad_size_id":2,"instl":1, "userID": "ABC456"}
         headers: {'Content-Type':'application/json', 'cookie': 'returnBidAmount=5.2345' }
         cookies: {}
+        userKV : 
+                network_1.buyerkey_1001 : {"returnBidAmount":"20.18"}
+                network_2.buyerkey_1001 : {"returnBidAmount":"20.28"}
+        predictions: 
+                  status_code: 2001
+                  text:
+                      seatbid: 
+                         - bid: 
+                            - price: 5.2345
 
     test2:
-        data: {"publisher_id":11112,"site_id":66,"pmp":{"deals":[{"id":"TA-99999-r1","floor":0.20000000298023224,"seats":["r1"],"type":2}]},"device":{"os":"26000"},"ad_size_id":2,"instl":1}
+        data: {"publisher_id":11112,"site_id":162,"pmp":{"deals":[{"id":"TA-99999-r1","floor":0.20000000298023224,"seats":["r1"],"type":2}]},"device":{"os":"26000"},"ad_size_id":2,"instl":1}
         headers: {'Content-Type':'application/json', 'cookie': 'returnBidAmount=2.2345' }
+        predictions: {"status_code":201}
 
     test3:
-        data: {"publisher_id":8888,"site_id":66,"pmp":{"deals":[{"id":"TA-99999-r1","floor":0.20000000298023224,"seats":["r1"],"type":2}]},"device":{"os":"26000"},"ad_size_id":2,"instl":1}
-        headers: {'Content-Type':'application/json', 'cookie': 'returnBidAmount=2.2345' }
-
+        data: {"publisher_id":11113,"site_id":163,"pmp":{"deals":[{"id":"TA-99999-r1","floor":0.20000000298023224,"seats":["r1"],"type":2}]},"device":{"os":"26000"},"ad_size_id":2,"instl":1}
+        headers: {'Content-Type':'application/json', 'cookie': 'returnBidAmount=3.2345' }
+        predictions: {"status_code":200, "text": {"price": 3.2345}}
 
 
 

@@ -136,15 +136,18 @@ def test_func(url , headers, cookies, data,predictions,userKV):
 
     # TODO : implement , one invocation only, Reuse connection 
     mc = memcache.Client(['192.168.150.110:11211'], debug=0)
-    print userKV
+    print "user KV ----> ", userKV
     
     for key in userKV :
-        print key
+        print "memcache key -----> ", key
+        print "memcache value ----> ", userKV[key] 
         mc.set(key, userKV[key])   # note that the key used for incr/decr must be a string.
+        print "get value from memcache -----> ", mc.get(key) 
+    # note that the key used for incr/decr must be a string.
     # {'network_id.buyerkey_1001': 20.98}
 
 
-
+    print "data -----> ",  data 
 
     response = requests.post(
             url, 

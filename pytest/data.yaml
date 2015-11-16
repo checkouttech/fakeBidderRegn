@@ -10,8 +10,8 @@ tests:
         headers: {'Content-Type':'application/json', 'cookie': 'returnBidAmount=5.2345' }
         cookies: {}
         userKV : 
-                network_1.buyerkey_1001 : {"returnBidAmount":"20.18"}
-                network_2.buyerkey_1001 : {"returnBidAmount":"20.28"}
+                ABC456: {"returnBidAmount":"20.18"}
+                network_2.buyerkey_1001: {"returnBidAmount":"20.28"}
         predictions: 
                   status_code: 2001
                   text:

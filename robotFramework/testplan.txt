@@ -1,13 +1,25 @@
 *** Settings ***
-Library         foo_module.py
+Library         regression.py
 
 *** Test Cases ***
 1) Test 1
-   ${r} =  foo_module.hello_world    # call Lib.func
+   ${r} =  regression.hello_world    # call Lib.func
    Should Contain  ${r}  HELLO
 
 2) Test 1
-   ${r} =  foo_module.hello_world    # call Lib.func
+   ${r} =  regression.hello_world    # call Lib.func
    Should Contain  ${r}  Hi
 
+3) Test 3
+   [documentation]   some comments
+   ${r} =  regression.hello_world    # call Lib.func
+   ${request} =   Create Dictionary  {
+             'data'    : {"publisher_id":11111,"site_id":161,"pmp":{"deals":[{"floor":0.24,"seats":["r1"]}]},"device":{"os":"26000"},"ad_size_id":2,"instl":1},
+             "headers" : {'Content-Type':'application/json', 'cookie': 'returnBidAmount=5.2345' },
+             "cookies" : {"put_x": 100},
+             "params"  : {'sessionKey': '9ebbd0b2', 'format': 'xml', 'platformId': 1}
+              }
+    ${response} = call Fake Bidder ( request )
+    #verify ( response , predictions )
 
+    Should Contain  ${r}  Hi

@@ -8,6 +8,10 @@ py.test -rs --tb=short  --pdb  exception.py
  py.test -s  test_api2.py
 
 
+# verbose 
+py.test -s -v test_api2.py
+
+
 
 sudo yum install python-memcached
 

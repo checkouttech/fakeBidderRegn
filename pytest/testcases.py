@@ -29,7 +29,7 @@ def test_1(memcacheConnection):
     verify ( response , predictions ) 
 
     # place for additional assertions  
-    assert 0 == 1    
+    # assert 0 == 1    
 
 def test_2(memcacheConnection):
     ''' 

@@ -6,7 +6,6 @@ from regression import *
 
 # @pytest.mark.usefixtures('memcacheConnection')
 def test_1(memcacheConnection):
-
     ''' 
     This is a demo test case 
     '''

@@ -103,5 +103,54 @@ def test_3(startup):
 
 
 
+def findDiff(d1, d2, path=""):
+    print "======= top level keys for d1 " , d1.keys()  
+    print "======= top level keys for d2 " , d2.keys()  
+    for k in d1.keys():
+        print " top level checking for key ", k 
+        
+        if not d2.has_key(k):
+            print path, ":"
+            print k + " as key not in d2", "\n"
+        else:
+            if type(d1[k]) is dict:
+                if path == "":
+                    path = k
+                else:
+                    path = path + "->" + k
+                findDiff(d1[k],d2[k], path)
+            else:
+                if d1[k] != d2[k]:
+                    print path, ":"
+                    print " - ", k," : ", d1[k]
+                    print " + ", k," : ", d2[k] 
+
+
+
+
+
+def validate_prediction(response,predictions):
+    assert response.status_code == 200,  "value was odd, should be even"
+    assert 200 == 200
+    
+    response_dict = {} 
+    response_dict['headers'] = response.headers
+    response_dict['status_code']  = response.status_code
+    response_dict['text']    = json.loads(response.text)
+     
+
+    print response.text
+    #print dict(response.text) 
+    print "predictions------->   ", predictions
+    print "response_dict -------> " , response_dict
+    
+    findDiff(predictions,response_dict) 
+    #findDiff(response_dict,predictions) 
+
+    #if predictions.viewitems() < response_dict.viewitems() : 
+    #if ( predictions.viewitems().issubset(response_dict.viewitems()) ): 
+    # Currently compares only keys and NOT values 
+    if ( set(predictions).issubset(response_dict) ): 
+        assert True ,  "subset " 
 
 

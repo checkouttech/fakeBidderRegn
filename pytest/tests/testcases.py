@@ -1,13 +1,4 @@
-import requests
-import pytest 
-import json 
 from modules.regression import * 
-import modules.regression
-
-
-
-
-
 
 
 def test_1():
@@ -25,13 +16,17 @@ def test_1():
     print "get value from memcache -----> ", getKeyValue("abc") 
 
     predictions = { "status_code": 200,
-                    "text": { "seatbid":  [{ "bid": [{ "price": 5.2345}], "seats": "testseat"}]}
+                    "text": { "seatbid":  [{ "bid": [{ "price": 5.2345}], "seat": "test1seat"}]},
+                    "headers" :    { "Content-Type": "text/html; charset=UTF-8" }
                   }
 
     response = callFakeBidder ( request ) 
+
     verify ( response , predictions ) 
 
-    # place for additional assertions  
+
+    print  response.headers
+    # place for additional assertions, if any  
     assert 1 == 1    
 
 def test_2():
@@ -46,7 +41,7 @@ def test_2():
               }
 
     predictions = { "status_code": 200,
-                    "text": { "seatbid":  [{ "bid": [{ "price": 5.2345}], "seats": "testseat"}]}
+                    "text": { "seatbid":  [{ "bid": [{ "price": 5.2345}], "seat": "testseat"}]}
                   }
 
     response = callFakeBidder ( request ) 
